@@ -6,8 +6,7 @@ add_library(libziparchive STATIC
     ${AOSP}/libziparchive/zip_error.cpp
     ${AOSP}/libziparchive/incfs_support/signal_handling.cpp)
 
-target_compile_options(libziparchive PRIVATE
-    -std=c++20)
+set_property(TARGET libziparchive PROPERTY CXX_STANDARD 20)
 
 target_compile_definitions(libziparchive PRIVATE
     -DZLIB_CONST
