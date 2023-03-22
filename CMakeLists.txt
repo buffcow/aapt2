@@ -13,13 +13,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Globle flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fcolor-diagnostics -fPIC")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics -fPIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics -fPIC -DNDEBUG")
 
 # Disable warnings
 add_compile_options(-Wno-attributes)
 
+# 64-bit off_t for lseek
+add_compile_definitions(_FILE_OFFSET_BITS=64)
+
 # aapt2 version
-set(ANDROID_VERSION 34.0.0)
+set(ANDROID_VERSION 33.0.3)
 set(ANDROID_VENDOR Github-@RohitVerma882)
 
 # Sources
