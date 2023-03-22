@@ -1,40 +1,34 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-if [[ -z "$NDK" ]]; then
-    echo "Please specify the Android NDK environment variable \"NDK\"."
-    exit 1
+if [[ -z "$ANDROID_NDK" ]]; then
+  echo "Please specify the Android NDK environment variable \"NDK\"."
+  exit 1
 fi
 
-CURRENT_DIR="$(pwd)"
-NDK_TOOLCHAIN="$NDK/toolchains/llvm/prebuilt/linux-x86_64"
+NDK_TOOLCHAIN="$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64"
 STRIP="$NDK_TOOLCHAIN/bin/llvm-strip"
+CLEAN=termux-elf-cleaner
 
-abi="$1"
-api="24"
-build_dir="$CURRENT_DIR/build/$abi"
-out_dir="$CURRENT_DIR/output/$abi"
+TARGET_ABI="$1"
+TARGET_API="24"
+PWD="$(pwd)"
 
-cmake -GNinja \
--B "$build_dir" \
--DANDROID_NDK="$NDK" \
--DCMAKE_TOOLCHAIN_FILE="$NDK/build/cmake/android.toolchain.cmake" \
--DANDROID_ABI="$abi" \
--DANDROID_NATIVE_API_LEVEL="$api" \
--DCMAKE_SYSTEM_NAME="Android" \
--DCMAKE_BUILD_TYPE="Release" \
--DANDROID_STL="c++_static" || exit 1
+cmake -GNinja -B "$PWD/build" \
+  -DANDROID_NDK="$ANDROID_NDK" \
+  -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake" \
+  -DANDROID_ABI="$TARGET_ABI" \
+  -DANDROID_NATIVE_API_LEVEL="$TARGET_API" \
+  -DCMAKE_SYSTEM_NAME="Android" \
+  -DCMAKE_BUILD_TYPE="Release" \
+  -DANDROID_STL="c++_static" || exit 1
 
-ninja -C "$build_dir" "-j$(nproc)" || exit 1
+ninja -C "$PWD/build" "-j$(nproc)" || exit 1
 
-mkdir -p "$out_dir" || exit 1
-cp "$build_dir/bin/aapt2" "$out_dir" || exit 1
-cp "$build_dir/bin/zipalign" "$out_dir" || exit 1
-
-aapt2="$out_dir/aapt2"
-zipalign="$out_dir/zipalign"
+aapt2="$PWD/build/bin/aapt2"
+zipalign="$PWD/build/bin/zipalign"
 
 $STRIP --strip-all "$aapt2" || exit 1
 $STRIP --strip-all "$zipalign" || exit 1
 
-$CLEAN --api-level "$api" "$aapt2" || exit 1
-$CLEAN --api-level "$api" "$zipalign" || exit 1
+$CLEAN --api-level "$TARGET_API" "$aapt2" || exit 1
+$CLEAN --api-level "$TARGET_API" "$zipalign" || exit 1

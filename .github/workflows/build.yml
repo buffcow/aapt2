@@ -8,7 +8,7 @@ on:
       - get_sources.sh
       - README.md
       - .github/**
-      - patches/*
+      - patches/**
   workflow_dispatch:
     inputs:
       logLevel:
@@ -32,22 +32,21 @@ jobs:
 
       - name: Prerequisites
         run: |
-            sudo apt install \
-            ninja-build \
-            autogen \
-            autoconf \
-            libtool \
-            build-essential \
-            curl \
-            -y
+          sudo apt install \
+          ninja-build \
+          autogen \
+          autoconf \
+          libtool \
+          build-essential \
+          cmake \
+          curl \
+          -y
 
-      - name: Download tools
+      - name: Setup cleaner
         run: |
-            cleaner=termux-elf-cleaner
             cleaner_version=v2.1.1
-            cleaner_url=https://github.com/termux/termux-elf-cleaner/releases/download/${cleaner_version}/${cleaner}
-            curl -L $cleaner_url > $cleaner
-            chmod +x $cleaner
+            curl -L https://github.com/termux/termux-elf-cleaner/releases/download/${cleaner_version}/termux-elf-cleaner > /usr/local/bin/termux-elf-cleaner
+            chmod +x /usr/local/bin/termux-elf-cleaner
         
       - uses: nttld/setup-ndk@v1
         id: setup-ndk
@@ -56,11 +55,10 @@ jobs:
           add-to-path: false
       - run: bash build.sh ${{ matrix.target_abi }}
         env:
-          CLEAN: ./termux-elf-cleaner
-          NDK: ${{ steps.setup-ndk.outputs.ndk-path }}
+          ANDROID_NDK: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: aapt2-${{ matrix.target_abi }}
-          path: output/${{ matrix.target_abi }}
+          path: build/bin

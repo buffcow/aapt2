@@ -35,6 +35,6 @@ target_include_directories(libandroidfw PUBLIC
     ${AOSP}/libbase/include
     ${AOSP}/libziparchive/include
     ${AOSP}/incfs/util/include
-    ${AOSP}/fmtlib/include)
+    ${AOSP}/external/fmtlib/include)
 
-target_link_libraries(libandroidfw PUBLIC fmt::fmt)
+target_link_libraries(libandroidfw PUBLIC libbase fmt::fmt)

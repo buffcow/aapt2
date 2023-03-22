@@ -120,12 +120,12 @@ target_include_directories(aapt2 PRIVATE
     ${AOSP}/libidmap2_policies/include
     ${AOSP}/libziparchive/include
     ${AOSP}/incfs/util/include
-    ${AOSP}/googletest/googletest/include
-    ${AOSP}/protobuf/src
-    ${AOSP}/expat/lib
-    ${AOSP}/fmtlib/include
-    ${AOSP}/libpng
-    ${AOSP}/zlib)
+    ${AOSP}/external/googletest/googletest/include
+    ${AOSP}/external/protobuf/src
+    ${AOSP}/external/expat/lib
+    ${AOSP}/external/fmtlib/include
+    ${AOSP}/external/libpng
+    ${AOSP}/external/zlib)
 
 target_compile_options(aapt2 PRIVATE
     -Wno-unused-parameter

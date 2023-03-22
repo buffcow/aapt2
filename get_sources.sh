@@ -1,5 +1,5 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # get, generate and patch
-# platform-tools-33.0.3
+# platform-tools-34.0.0
 # No implemented

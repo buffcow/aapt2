@@ -9,11 +9,11 @@ target_include_directories(zipalign PRIVATE
     ${AOSP}/liblog/include
     ${AOSP}/libutils/include
     ${AOSP}/libziparchive/include
-    ${AOSP}/zlib)
+    ${AOSP}/external/zlib)
 
 target_include_directories(zipalign PRIVATE
     ${AOSP}/zipalign/include
-    ${AOSP}/zopfli/src)
+    ${AOSP}/external/zopfli/src)
     
 target_link_libraries(zipalign  
     libbase

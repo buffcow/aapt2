@@ -19,4 +19,4 @@ target_include_directories(libziparchive PRIVATE
     ${AOSP}/libziparchive/incfs_support/include
     ${AOSP}/libbase/include 
     ${AOSP}/liblog/include
-    ${AOSP}/googletest/googletest/include)
+    ${AOSP}/external/googletest/googletest/include)
