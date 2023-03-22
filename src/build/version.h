@@ -9,7 +9,7 @@
 namespace android {
 	namespace build {
 		std::string GetBuildNumber() {
-			return "github-@RohitVerma882";
+			return "Github-@RohitVerma882";
 		}
 	}
 }

@@ -17,5 +17,4 @@ target_include_directories(libziparchive PRIVATE
     ${AOSP}/libziparchive/include
     ${AOSP}/libziparchive/incfs_support/include
     ${AOSP}/libbase/include 
-    ${AOSP}/liblog/include
-    ${AOSP}/external/googletest/googletest/include)
+    ${AOSP}/liblog/include)

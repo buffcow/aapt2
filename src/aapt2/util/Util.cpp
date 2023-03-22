@@ -30,6 +30,8 @@
 #include "util/Maybe.h"
 #include "utils/Unicode.h"
 
+#include "build/version.h"
+
 using ::aapt::text::Utf8Iterator;
 using ::android::StringPiece;
 using ::android::StringPiece16;
@@ -230,7 +232,10 @@ std::string GetToolFingerprint() {
   // Update minor version whenever a feature or flag is added.
   static const char* const sMinorVersion = "19";
 
-  return android::base::StringPrintf("%s.%s", sMajorVersion, sMinorVersion);
+  // The build id of aapt2 binary.
+  static const std::string sBuildId = android::build::GetBuildNumber();
+
+  return android::base::StringPrintf("%s.%s-%s", sMajorVersion, sMinorVersion, sBuildId.c_str());
 }
 
 static size_t ConsumeDigits(const char* start, const char* end) {

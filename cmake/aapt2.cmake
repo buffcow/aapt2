@@ -120,7 +120,7 @@ target_include_directories(aapt2 PRIVATE
     ${AOSP}/libidmap2_policies/include
     ${AOSP}/libziparchive/include
     ${AOSP}/incfs/util/include
-    ${AOSP}/external/googletest/googletest/include
+    ${AOSP}
     ${AOSP}/external/protobuf/src
     ${AOSP}/external/expat/lib
     ${AOSP}/external/fmtlib/include

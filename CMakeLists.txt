@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_EXTENSIONS ON)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Use C++20 with GNU extensions
+# Use C++17 with GNU extensions
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -20,7 +20,7 @@ add_compile_options(-Wno-attributes)
 
 # aapt2 version
 set(ANDROID_VERSION 34.0.0)
-set(ANDROID_VENDOR github-@RohitVerma882)
+set(ANDROID_VENDOR Github-@RohitVerma882)
 
 # Sources
 set(AOSP ${PROJECT_SOURCE_DIR}/src)
