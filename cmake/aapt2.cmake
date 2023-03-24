@@ -17,8 +17,8 @@ foreach(proto ${PROTO_FILES})
     endif()
 endforeach()
 
-set_source_files_properties(${AAPT2_PROTO_SRC} PROPERTIES GENERATED TRUE)
-set_source_files_properties(${AAPT2_PROTO_HDRS} PROPERTIES GENERATED TRUE)
+# set_source_files_properties(${AAPT2_PROTO_SRC} PROPERTIES GENERATED TRUE)
+# set_source_files_properties(${AAPT2_PROTO_HDRS} PROPERTIES GENERATED TRUE)
 # ========================= aapt2 proto ============================
 
 
