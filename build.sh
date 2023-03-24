@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z "$ANDROID_NDK" ]]; then
-  echo "Please specify the Android NDK environment variable \"NDK\"."
+  echo "Please specify the Android NDK environment variable \"ANDROID_NDK\"."
   exit 1
 fi
 
