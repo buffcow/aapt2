@@ -23,7 +23,7 @@ add_compile_definitions(_FILE_OFFSET_BITS=64)
 
 # aapt2 version
 set(ANDROID_VERSION 33.0.3)
-set(ANDROID_VENDOR 23.3.27)
+# set(ANDROID_VENDOR 23.3.27)
 
 # Sources
 set(AOSP ${PROJECT_SOURCE_DIR}/src)
