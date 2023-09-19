@@ -22,7 +22,7 @@ add_compile_options(-Wno-attributes)
 add_compile_definitions(_FILE_OFFSET_BITS=64)
 
 # aapt2 version
-set(ANDROID_VERSION 33.0.3)
+set(ANDROID_VERSION 34.0.3)
 # set(ANDROID_VENDOR 23.3.27)
 
 # Sources
